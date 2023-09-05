@@ -1,0 +1,61 @@
+.imageContainer {
+  position: relative;
+  background-color: $clr-secondary;
+  min-height: 300px;
+  aspect-ratio: 1;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding: 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  > span {
+    font-weight: bold;
+  }
+  hr {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+  hgroup {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.frontPageGrid {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 3rem;
+  column-gap: 2rem;
+  .showCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    flex: 1;
+    border: 1px solid $clr-secondary;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+  button {
+    border: none;
+    font-weight: bold;
+    color: $clr-white;
+    background-color: $clr-accent;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+}

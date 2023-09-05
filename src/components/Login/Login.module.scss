@@ -1,0 +1,19 @@
+.loginForm {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  background-color: $clr-secondary;
+  padding: 1rem;
+  span {
+    font-size: 0.8rem;
+    color: $clr-white;
+  }
+}
+
+.loginWrapper {
+  position: relative;
+  width: fit-content;
+}

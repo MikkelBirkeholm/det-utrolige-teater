@@ -1,0 +1,22 @@
+.eventDetails {
+  width: 100%;
+  border: 1px solid $clr-secondary;
+  img {
+    padding: 1rem;
+  }
+}
+
+.contentWrapper {
+  padding: 1rem;
+}
+
+.eventInfo {
+  @include flex(row, space-between, center, 0rem);
+}
+
+.imageContainer {
+  position: relative;
+  background-color: $clr-secondary;
+  min-height: 300px;
+  aspect-ratio: 16 / 9;
+}

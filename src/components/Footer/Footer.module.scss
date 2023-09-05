@@ -1,0 +1,26 @@
+.footer {
+  background-color: $clr-accent;
+  width: 100%;
+  color: $clr-white;
+  padding: 2rem;
+  @include responsiveGrid(200px, 2rem, auto-fit);
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+  h3 {
+    font-family: $font-main;
+    color: $clr-white;
+  }
+  ul {
+    padding-bottom: 1rem;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    @include tablet {
+      justify-content: flex-start;
+    }
+  }
+}

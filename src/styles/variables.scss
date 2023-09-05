@@ -1,0 +1,45 @@
+// farver
+$clr-primary: #d39d5b;
+$clr-secondary: #ad7a51;
+$clr-accent: #30454c;
+$clr-text: #707070;
+$clr-lightgray: #dfdfdf;
+$clr-white: #fff;
+
+//fonts
+$font-main: var(--font-titillium);
+$font-heading: var(--font-playfair);
+
+//layout
+
+//mixins
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 1rem) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin innerwidth {
+  width: clamp(2ch, 1100px, 95vw);
+  margin: 0 auto;
+}
+
+@mixin responsiveGrid($minwidth: 200px, $gap: 1rem, $fit: auto-fit) {
+  display: grid;
+  grid-template-columns: repeat($fit, minmax($minwidth, 1fr));
+  gap: $gap;
+}
+
+@mixin mobile {
+  @media (width < 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width < 800px) {
+    @content;
+  }
+}

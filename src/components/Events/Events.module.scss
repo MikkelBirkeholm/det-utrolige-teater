@@ -1,0 +1,68 @@
+.filterBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0;
+  @include mobile {
+    flex-direction: column-reverse;
+  }
+}
+
+.eventListWrapper {
+  width: 100%;
+  ul {
+    @include flex(column, center, flex-start, 1rem);
+    li {
+      width: 100%;
+      display: flex;
+      border: 1px solid $clr-primary;
+      @include mobile {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.contentWrapper {
+  @include flex(row, flex-start, center, 1rem);
+  @include mobile {
+    @include flex(column, center, center, 1rem);
+  }
+  padding: 1rem;
+  width: 100%;
+  > * {
+    flex: 1;
+  }
+  .infoBox {
+    border-left: 1px solid $clr-lightgray;
+    padding-left: 2rem;
+    @include mobile {
+      border-left: none;
+      border-top: 1px solid $clr-lightgray;
+      padding-left: none;
+      padding-top: 1rem;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @include mobile {
+    justify-content: center;
+  }
+  gap: 1rem;
+  width: 100%;
+  button {
+    border: none;
+    font-weight: bold;
+    color: $clr-white;
+    background-color: $clr-accent;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+}

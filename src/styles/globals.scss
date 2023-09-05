@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-main;
+  color: $clr-text;
+  min-height: 100vh;
+  @include flex(column, space-between, center, 1rem);
+  @include innerwidth;
+  main {
+    width: 100%;
+    @include flex(column, flex-start, flex-start, 2rem);
+  }
+}
+
+.demobox {
+  border: 2px solid $clr-primary;
+  width: 100%;
+  padding: 2rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: $clr-lightgray;
+}
+
+button {
+  background-color: $clr-accent;
+  border: none;
+  color: $clr-white;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  &:hover {
+    background-color: $clr-primary;
+  }
+}
+
+.readmore-btn {
+  background-color: $clr-primary;
+  font-weight: bold;
+  color: $clr-white;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    color: $clr-white;
+    background-color: $clr-accent;
+  }
+}
+
+.buy-btn {
+  background-color: $clr-accent;
+  font-weight: bold;
+  color: $clr-white;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    color: $clr-white;
+    background-color: $clr-primary;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: $clr-secondary;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-family: $font-heading;
+  color: $clr-primary;
+}
+#root,
+#__next {
+  isolation: isolate;
+}

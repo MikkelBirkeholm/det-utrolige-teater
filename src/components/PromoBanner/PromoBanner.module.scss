@@ -1,0 +1,56 @@
+.promoCard {
+  position: relative;
+  display: grid;
+  flex: 1 0 100%;
+  grid-template-columns: 1fr 2.5fr;
+  min-height: 400px;
+  gap: 1rem;
+  width: 100%;
+  border: 1px solid $clr-secondary;
+  @include mobile {
+    grid-template-columns: 1fr;
+    .imageContainer {
+      order: 1;
+    }
+    .contentContainer {
+      order: 2;
+    }
+  }
+
+  .imageContainer {
+    order: 2;
+    aspect-ratio: auto;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  background-color: $clr-secondary;
+  min-height: 300px;
+  aspect-ratio: 1;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding: 1rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  > span {
+    font-weight: bold;
+  }
+  hr {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+  hgroup {
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.actorList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  li {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+}
+.contentWrapper {
+  border: 1px solid $clr-secondary;
+  padding: 1rem;
+  width: 100%;
+  h1 {
+    font-size: 3rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.actorCard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
