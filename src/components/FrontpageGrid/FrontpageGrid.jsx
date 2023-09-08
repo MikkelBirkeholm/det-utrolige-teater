@@ -5,6 +5,7 @@ import convertDates from '@/utils/convertDates'
 import { BuyTicket } from './buttons/BuyTicket'
 import { ReadMore } from './buttons/ReadMore'
 import { PromoBanner } from '../PromoBanner/PromoBanner'
+import Link from 'next/link'
 
 async function getAllShows() {
   try {
@@ -70,6 +71,9 @@ export default function FrontpageGrid() {
             </article>
           )
         })}
+      <Link href={`/events`}>
+        <button>Se Alle Forestillinger</button>
+      </Link>
     </div>
   )
 }

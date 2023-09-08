@@ -33,6 +33,7 @@
 .frontPageGrid {
   display: flex;
   flex-flow: row wrap;
+  justify-content: flex-end;
   row-gap: 3rem;
   column-gap: 2rem;
   .showCard {

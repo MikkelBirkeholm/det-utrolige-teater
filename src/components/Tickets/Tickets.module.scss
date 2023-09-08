@@ -1,14 +1,24 @@
 .ticketsForm {
   display: flex;
   flex-direction: column;
-  label {
-    display: flex;
-    align-items: flex-start;
-    span {
-      flex: 1;
-    }
-    input {
-      flex: 2;
+  gap: 0.5rem;
+  padding: 1rem;
+  h1 {
+    text-align: right;
+    font-size: 3rem;
+  }
+  > span {
+    align-self: flex-end;
+    margin-bottom: 2rem;
+  }
+  hgroup {
+    font-size: 2rem;
+    text-align: right;
+    padding: 1rem 0;
+    h2 {
+      color: $clr-text;
+      font-family: $font-main;
+      font-weight: bold;
     }
   }
 }
@@ -97,11 +107,19 @@
   label {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    text-transform: uppercase;
     @include mobile {
       grid-template-columns: 1fr;
     }
+    > span {
+      font-size: 1.5rem;
+    }
     input {
-      min-width: 50%;
+      color: $clr-secondary;
+      padding: 0.5rem 1rem;
+      flex: 1;
+      min-width: calc(50% - 10px);
+      margin-left: 10px;
     }
   }
   .formInner {
@@ -131,7 +149,6 @@
 
 .orderDetails {
   text-transform: uppercase;
-  padding: 1rem;
   > p {
     width: 100%;
     text-align: right;

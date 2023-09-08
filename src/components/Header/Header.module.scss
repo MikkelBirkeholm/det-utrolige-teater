@@ -53,3 +53,14 @@
   gap: 1rem;
   background-color: $clr-white;
 }
+
+.searchForm {
+  border: 1px solid $clr-lightgray;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  input {
+    border: none;
+  }
+}

@@ -13,7 +13,7 @@ export const TicketsForm = ({ show, rows }) => {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isDirty, isValid },
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       fornavn: '',
@@ -63,6 +63,10 @@ export const TicketsForm = ({ show, rows }) => {
             <fieldset className={styles.ticketsForm}>
               <h1>Køb Billet</h1>
               <hr />
+              <hgroup>
+                <h2>{show.title}</h2>
+                <span>{show.stage.name}</span>
+              </hgroup>
               <label>
                 <span>Fornavn</span>
                 <input
@@ -134,30 +138,32 @@ export const TicketsForm = ({ show, rows }) => {
               {errors.postnummer && (
                 <span role="alert">{errors.postnummer.message}</span>
               )}
-              <label>
-                <span>Antal</span>
-                <input
-                  type="number"
-                  value={antal}
-                  min={1}
-                  {...register('antal', {
-                    required: true,
-                    onChange: (e) => setAntal(e.target.value),
-                    max: {
-                      value: 10,
-                      message:
-                        'Kontakt os venligt per telefon, hvis du vil booke mere end 10 billetter',
-                    },
-                    min: {
-                      value: 1,
-                      message: 'Du skal resereve mindst en billet',
-                    },
-                  })}
-                />
-                <span>Pris: {show.price * antal} DKK</span>
-              </label>
               {errors.antal && <span role="alert">{errors.antal.message}</span>}
               <span>Alle felter skal udfyldes</span>
+              <label>
+                <span>Antal</span>
+                <div>
+                  <input
+                    type="number"
+                    value={antal}
+                    min={1}
+                    {...register('antal', {
+                      required: true,
+                      onChange: (e) => setAntal(e.target.value),
+                      max: {
+                        value: 10,
+                        message:
+                          'Kontakt os venligt per telefon, hvis du vil booke mere end 10 billetter',
+                      },
+                      min: {
+                        value: 1,
+                        message: 'Du skal resereve mindst en billet',
+                      },
+                    })}
+                  />
+                  <span>Pris: {show.price * antal},00 DKK</span>
+                </div>
+              </label>
             </fieldset>
           </div>
           <SeatPicker

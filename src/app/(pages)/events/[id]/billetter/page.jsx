@@ -1,6 +1,5 @@
 import styles from '../styles.module.scss'
 import { splitArray } from '@/utils/splitArray'
-import { TicketsCombiner } from '@/components/Tickets/TicketsCombiner'
 import { TicketsForm } from '@/components/Tickets/TicketsForm'
 
 async function getEventDetails(id) {
