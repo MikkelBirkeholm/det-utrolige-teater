@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 
-export const BuyTicket = () => {
+export const BuyTicket = ({ id }) => {
   return (
     <Link
-      href="/"
+      href={`/events/${id}/billetter`}
       className="buy-btn"
     >
       Køb Billet

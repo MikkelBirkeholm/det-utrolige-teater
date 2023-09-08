@@ -3,7 +3,7 @@
 *::after {
   box-sizing: border-box;
 }
-* {
+*:not(dialog) {
   margin: 0;
 }
 body {
@@ -18,6 +18,12 @@ body {
     width: 100%;
     @include flex(column, flex-start, flex-start, 2rem);
   }
+}
+
+dialog {
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 .demobox {
@@ -45,6 +51,9 @@ button {
   cursor: pointer;
   &:hover {
     background-color: $clr-primary;
+  }
+  &:disabled {
+    background-color: $clr-lightgray;
   }
 }
 

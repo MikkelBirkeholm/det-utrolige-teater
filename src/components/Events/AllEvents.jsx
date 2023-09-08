@@ -35,26 +35,27 @@ export default function AllEvents() {
 
   // filtered fetch
   useEffect(() => {
-    console.log(filter)
-    async function getAllShows() {
-      try {
-        const res = await fetch(
-          `http://localhost:4000/events?orderby=${filter.value}&dir=${filter.direction}`
-        )
-        const data = await res.json()
-        const showIDs = data.map((show) => show.id)
+    if (filter !== null) {
+      async function getAllShows() {
+        try {
+          const res = await fetch(
+            `http://localhost:4000/events?orderby=${filter.value}&dir=${filter.direction}`
+          )
+          const data = await res.json()
+          const showIDs = data.map((show) => show.id)
 
-        const showArr = showIDs.map(async (id) => {
-          const showRes = await fetch(`http://localhost:4000/events/${id}`)
-          return showRes.json()
-        })
-        const compiledData = await Promise.all(showArr)
-        setShows(compiledData)
-      } catch (error) {
-        console.log(error)
+          const showArr = showIDs.map(async (id) => {
+            const showRes = await fetch(`http://localhost:4000/events/${id}`)
+            return showRes.json()
+          })
+          const compiledData = await Promise.all(showArr)
+          setShows(compiledData)
+        } catch (error) {
+          console.log('filter error', error)
+        }
       }
+      getAllShows()
     }
-    getAllShows()
   }, [filter])
 
   function handleFilterChange(e) {
@@ -67,22 +68,17 @@ export default function AllEvents() {
   return (
     <div className={styles.eventListWrapper}>
       <div className={styles.filterBox}>
-        <select onChange={handleFilterChange}>
+        <select
+          onChange={handleFilterChange}
+          defaultValue={'init'}
+        >
           <option
-            value="title"
+            value="init"
             data-dir="DESC"
-            selected
             disabled
           >
             Sorter efter...
           </option>
-          {/* <option
-            value="popularity"
-            data-dir="DESC"
-          >
-            Sorter efter popularitet
-          </option> */}
-
           <option
             value="price"
             data-dir="DESC"
@@ -125,7 +121,6 @@ export default function AllEvents() {
                     objectFit: 'cover',
                     objectPosition: 'center',
                     height: 'auto',
-                    width: '100%',
                     flex: '0',
                   }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -141,7 +136,7 @@ export default function AllEvents() {
                     </span>
                   </div>
                   <div className={styles.buttonGroup}>
-                    <BuyTicket />
+                    <BuyTicket id={show.id} />
                     <ReadMore id={show.id} />
                   </div>
                 </div>

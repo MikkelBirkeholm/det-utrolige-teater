@@ -63,7 +63,7 @@ export default function FrontpageGrid() {
                   <span>{show.genre.name}</span>
                 </hgroup>
                 <div className={styles.buttonGroup}>
-                  <BuyTicket />
+                  <BuyTicket id={show.id} />
                   <ReadMore id={show.id} />
                 </div>
               </div>

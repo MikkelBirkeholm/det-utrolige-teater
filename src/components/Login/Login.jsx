@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import styles from './Login.module.scss'
 import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
-import { checkUser } from '@/utils/checkUser'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
   const router = useRouter()
-  const pathname = usePathname()
+
   const [isVisible, setIsVisible] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const {
@@ -83,7 +82,7 @@ export async function login(username, password) {
 
   const headers = new Headers()
   headers.append('Content-Type', 'application/x-www-form-urlencoded')
-  headers.append('Authorization', `Bearer ${process.env.API_TOKEN}`) // Use environment variables for the token
+  // headers.append('Authorization', `Bearer ${process.env.API_TOKEN}`)
 
   const body = new URLSearchParams()
   body.append('username', username)
@@ -98,6 +97,7 @@ export async function login(username, password) {
 
   try {
     const response = await fetch(`${apiUrl}/login`, requestOptions)
+
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`)
     }

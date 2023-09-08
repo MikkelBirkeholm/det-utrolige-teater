@@ -1,7 +1,9 @@
 import Image from 'next/image'
-import styles from './Header.module.scss'
 import LoginForm from '../Login/Login'
 import Link from 'next/link'
+import styles from './Header.module.scss'
+import { MobilePopup } from './MobilePopup'
+import { SearchField } from './SearchField'
 
 export default function Header() {
   return (
@@ -16,29 +18,16 @@ export default function Header() {
         priority={true}
       />
       <div>
-        <input
-          type="search"
-          name="search"
-          id="search"
-          placeholder="INDTAST SØGORD"
-        />
-        <nav>
-          <ul
-            title="dekstop nav"
-            className={styles.desktopNav}
-          >
+        <SearchField />
+        <nav className={styles.desktopNav}>
+          <ul title="dekstop nav">
             <Link href="/">FORSIDE</Link>
             <Link href="/events">FORESTILLINGER & EVENTS</Link>
             <Link href="/skuespillere">SKUESPILLERE</Link>
             <LoginForm />
           </ul>
-          <ul
-            title="mobile nav"
-            className={styles.mobileNav}
-          >
-            burger icon
-          </ul>
         </nav>
+        <MobilePopup />
       </div>
     </div>
   )

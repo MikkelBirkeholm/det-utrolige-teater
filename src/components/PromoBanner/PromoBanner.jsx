@@ -25,6 +25,7 @@ export const PromoBanner = async () => {
             objectPosition: 'top',
             padding: '0.5rem',
           }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           fill={true}
           alt={eventData.title}
         />

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 import convertDates from '@/utils/convertDates'
 import { BuyTicket } from '@/components/FrontpageGrid/buttons/BuyTicket'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const res = await fetch(`http://localhost:4000/events`)
@@ -19,14 +20,30 @@ async function getEventDetails(id) {
   return data
 }
 
+async function getAllActors() {
+  try {
+    const res = await fetch(`http://localhost:4000/actors`)
+    const data = await res.json()
+    const actorIDs = data.map((actor) => actor.id)
+
+    const actorArr = actorIDs.map(async (id) => {
+      const showRes = await fetch(`http://localhost:4000/actors/${id}`)
+      return showRes.json()
+    })
+    const compiledData = await Promise.all(actorArr)
+    const trimmedData = compiledData.slice(0, 4)
+    return trimmedData
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default async function Page({ params }) {
   const id = params.id
   const show = await getEventDetails(id)
 
   const startDate = convertDates(show.startdate)
   const endDate = convertDates(show.stopdate)
-
-  console.log(show)
   return (
     <main>
       <article className={styles.eventDetails}>
@@ -57,13 +74,36 @@ export default async function Page({ params }) {
               <h1>{show.title}</h1>
               <span>{show.genre.name}</span>
             </hgroup>
-            <BuyTicket />
+            <BuyTicket id={show.id} />
           </div>
           <p>{show.description}</p>
           <p>Varighed ca. {show.duration_minutes} minutter</p>
           <h2>Medvirkende</h2>
+          <ul className={styles.actors}>
+            {show.actors.map((actor) => {
+              return (
+                <li key={actor.id}>
+                  <Image
+                    src={`/images/actors/${actor.image}`}
+                    width={150}
+                    height={200}
+                    style={{
+                      height: 'auto',
+                      width: '100%',
+                      aspectRatio: '1 / 1',
+                    }}
+                    alt={actor.name}
+                  />
+                  <p>{actor.name}</p>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </article>
+      <Link href={`/events`}>
+        <button>Tilbage til alle forestillinger</button>
+      </Link>
     </main>
   )
 }

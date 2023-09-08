@@ -13,10 +13,18 @@
   ul {
     @include flex(column, center, flex-start, 1rem);
     li {
+      img {
+        padding: 0.1rem;
+        background-color: $clr-secondary;
+        width: 150px;
+      }
       width: 100%;
       display: flex;
       border: 1px solid $clr-primary;
       @include mobile {
+        img {
+          width: 100%;
+        }
         flex-direction: column;
       }
     }
